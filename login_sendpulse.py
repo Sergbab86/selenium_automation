@@ -3,6 +3,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support import expected_conditions as EC
+
+from email_generator import random_emails
 
 # credentials
 email = 'gosep32179@mugadget.com'
@@ -16,7 +19,6 @@ option.add_argument('start-maximized')
 # Initialize Chromedriver and open our website
 driver = webdriver.Chrome(options=option)
 driver.get("https://sendpulse.com/")
-wait = WebDriverWait(driver, 20)
 
 # Go to log in form
 driver.find_element(By.CSS_SELECTOR, 'li.menu-reg__item').click()
@@ -36,6 +38,15 @@ sleep(2)
 driver.find_element(By.CSS_SELECTOR, 'button[name="submit"]').click()
 sleep(3)
 
+# Create a mailing list
+driver.find_element(By.CSS_SELECTOR, 'a[class="btn btn-create"]').click()
+WebDriverWait(driver, 10).until(EC.element_to_be_clickable(By.CSS_SELECTOR, 'button[onclick="addAddressBook();"]'))
+driver.find_element(By.CSS_SELECTOR, 'button[onclick="addAddressBook();"]').click()
+driver.find_element(By.CSS_SELECTOR, 'span[onclick="toggleUploadBlock(this);').click()
+email_form = driver.find_element(By.CSS_SELECTOR, 'textarea#emailsList')
+for email in random_emails:
+    email_form.send_keys(email)
+sleep(2)
 
 # Log out
 driver.find_element(By.CSS_SELECTOR, 'span#user_avatar_span').click()
