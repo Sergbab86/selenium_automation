@@ -9,7 +9,7 @@ __pycache__/
 *.so
 
 # Secured files
-emails_passwords.py
+emails_passwords
 
 # Distribution / packaging
 .Python
