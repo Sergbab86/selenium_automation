@@ -8,6 +8,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Secured files
+emails_passwords.py
+
 # Distribution / packaging
 .Python
 build/

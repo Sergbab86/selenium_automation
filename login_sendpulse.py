@@ -5,12 +5,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 
 from email_generator import random_emails
+from emails_passwords import *
 
 # credentials
-email = 'gosep32179@mugadget.com'
-password = 'Qazx1324!'
+email = EMAIL1
+password = PASSWORD1
 
 # Disable notifications in the browser's window and maximize browser's window
 option = Options()
@@ -42,19 +44,27 @@ sleep(1)
 
 # Create a mailing list
 driver.find_element(By.CSS_SELECTOR, 'a[class="btn btn-create"]').click()
+
 wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[onclick="addAddressBook();"]')))
 driver.find_element(By.CSS_SELECTOR, 'button[onclick="addAddressBook();"]').click()
+
 wait.until(EC.element_to_be_clickable((By.XPATH, '//span[@class="label label-as-link label-yellow arrow_box"]')))
 driver.find_element(By.XPATH, '//span[@class="label label-as-link label-yellow arrow_box"]').click()
+
 email_form = driver.find_element(By.CSS_SELECTOR, 'textarea#emailsList')
 for email in random_emails:
-    email_form.send_keys(email)
-sleep(2)
+    email_form.send_keys(email, Keys.ENTER)
+
+driver.find_element(By.CSS_SELECTOR, 'input[value="Upload"][name="submit_text"]').click()
+# wait.until(EC.visibility_of_element_located((By.CLASS_NAME, 'alert alert-success')))
+wait.until(EC.visibility_of_element_located((By.XPATH, '//b[contains(text(), "Ready!"')))
+
+# sleep(2)
 
 # Log out
-# driver.find_element(By.CLASS_NAME, 'img-circle').click()
-# sleep(2)
-# driver.find_element(By.CSS_SELECTOR, 'a[href="/logout/"]').click()
-# sleep(2)
+driver.find_element(By.CLASS_NAME, 'img-circle').click()
+sleep(2)
+driver.find_element(By.CSS_SELECTOR, 'a[href="/logout/"]').click()
+sleep(2)
 
 driver.close()
