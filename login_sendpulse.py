@@ -56,8 +56,8 @@ for email in random_emails:
     email_form.send_keys(email, Keys.ENTER)
 
 driver.find_element(By.CSS_SELECTOR, 'input[value="Upload"][name="submit_text"]').click()
-# wait.until(EC.visibility_of_element_located((By.CLASS_NAME, 'alert alert-success')))
-wait.until(EC.visibility_of_element_located((By.XPATH, '//b[contains(text(), "Ready!"')))
+wait.until(EC.visibility_of_element_located((By.CLASS_NAME, 'img-circle')))
+# wait.until(EC.visibility_of_element_located((By.XPATH, '//b[contains(text(), "Ready!"')))
 
 # sleep(2)
 
