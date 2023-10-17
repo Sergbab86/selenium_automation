@@ -11,7 +11,7 @@ from email_generator import random_emails
 from emails_passwords import *
 
 # credentials
-email = EMAIL1
+email = EMAIL2
 password = PASSWORD1
 
 # Disable notifications in the browser's window and maximize browser's window
@@ -22,7 +22,7 @@ option.add_argument('start-maximized')
 # Initialize Chromedriver and open our website
 driver = webdriver.Chrome(options=option)
 driver.get("https://sendpulse.com/")
-wait = WebDriverWait(driver, 10)
+wait = WebDriverWait(driver, 20)
 # Go to log in form
 driver.find_element(By.CSS_SELECTOR, 'li.menu-reg__item').click()
 
@@ -32,7 +32,7 @@ sleep(1)
 driver.find_element(By.CSS_SELECTOR, 'input#login_password').send_keys(password)
 sleep(2)
 driver.find_element(By.XPATH, "//button[normalize-space()='Login']").click()
-sleep(2)
+sleep(2.5)
 
 # Click on captcha and finish log in process
 driver.switch_to.frame(driver.find_elements(By.TAG_NAME, "iframe")[0])
@@ -56,15 +56,20 @@ for email in random_emails:
     email_form.send_keys(email, Keys.ENTER)
 
 driver.find_element(By.CSS_SELECTOR, 'input[value="Upload"][name="submit_text"]').click()
-wait.until(EC.visibility_of_element_located((By.CLASS_NAME, 'img-circle')))
-# wait.until(EC.visibility_of_element_located((By.XPATH, '//b[contains(text(), "Ready!"')))
+wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, '#status-description > b:nth-child(1)')))
 
-# sleep(2)
+# Delete created email list
+driver.find_element(By.CSS_SELECTOR, 'a.active > span:nth-child(2)').click()
+driver.find_element(By.CSS_SELECTOR, 'span[class="glyphicon glyphicon-option-horizontal"]').click()
+driver.find_element(By.XPATH, '(//a[contains(text(),"addressBookDeleteDialog")])').click()
+wait.until(EC.element_to_be_clickable((By.XPATH, '(//button[contains(text(),"addressBookDelete")])')))
+driver.find_element(By.XPATH, '(//button[contains(text(),"addressBookDelete")])').click()
 
 # Log out
+wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'img-circle')))
 driver.find_element(By.CLASS_NAME, 'img-circle').click()
 sleep(2)
 driver.find_element(By.CSS_SELECTOR, 'a[href="/logout/"]').click()
 sleep(2)
-
+#status-description > b:nth-child(1)
 driver.close()
