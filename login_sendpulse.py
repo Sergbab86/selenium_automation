@@ -37,6 +37,7 @@ sleep(2.5)
 # Click on captcha and finish log in process
 driver.switch_to.frame(driver.find_elements(By.TAG_NAME, "iframe")[0])
 driver.find_element(By.ID, 'recaptcha-anchor').click()
+wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'div[class="recaptcha-checkbox-checkmark"]')))
 driver.switch_to.default_content()
 sleep(1)
 driver.find_element(By.CSS_SELECTOR, 'button[name="submit"]').click()
