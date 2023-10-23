@@ -44,7 +44,7 @@ driver.find_element(By.CSS_SELECTOR, 'button[name="submit"]').click()
 sleep(1)
 
 # Create a mailing list
-driver.find_element(By.CSS_SELECTOR, 'a[class="btn btn-create"]').click()
+driver.find_element(By.CSS_SELECTOR, 'a."btn btn-create"]').click()
 
 wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[onclick="addAddressBook();"]')))
 driver.find_element(By.CSS_SELECTOR, 'button[onclick="addAddressBook();"]').click()
