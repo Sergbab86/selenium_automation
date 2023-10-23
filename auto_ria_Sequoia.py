@@ -32,6 +32,7 @@ wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'a#sortCheckedElement'))
 driver.find_element(By.CSS_SELECTOR, 'a#sortCheckedElement').click()
 driver.find_element(By.CSS_SELECTOR, 'a[data-value="dates.created.desc"]').click()
 
+
 # Remove custom
 # driver.find_element(By.CSS_SELECTOR, 'span[data-name="custom.not"],a[title="удалить"]').click()
 
