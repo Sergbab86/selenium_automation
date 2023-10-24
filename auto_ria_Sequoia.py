@@ -4,6 +4,7 @@ from time import sleep
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
@@ -18,6 +19,8 @@ option.add_argument('start-maximized')
 driver = webdriver.Chrome(options=option)
 driver.get('https://auto.ria.com/')
 wait = WebDriverWait(driver, 20)
+actions = ActionChains(driver)
+
 driver.implicitly_wait(10)
 
 
