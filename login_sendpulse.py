@@ -24,7 +24,7 @@ driver = webdriver.Chrome(options=option)
 driver.get("https://sendpulse.com/")
 wait = WebDriverWait(driver, 20)
 # Go to log in form
-driver.find_element(By.CSS_SELECTOR, 'li.menu-reg__item').click()
+driver.find_element(By.CSS_SELECTOR, 'li.menu-reg__item').click():klljhb
 
 # Paste your credentials in the login-form
 driver.find_element(By.CSS_SELECTOR, 'input#login_email').send_keys(email)
