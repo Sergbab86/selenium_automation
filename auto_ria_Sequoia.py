@@ -19,17 +19,16 @@ option.add_argument('start-maximized')
 driver = webdriver.Chrome(options=option)
 driver.get('https://auto.ria.com/')
 wait = WebDriverWait(driver, 20)
-actions = ActionChains(driver)
-
+# actions = ActionChains(driver)
 driver.implicitly_wait(10)
 
 
 # Fill characteristics for the car
 driver.find_element(*MainPageLocators.BRAND_SEARCH_BUTTON).click()
-wait.until(EC.element_to_be_clickable(MainPageLocators.BRAND_SCROLLBAR))
+# wait.until(EC.element_to_be_clickable(MainPageLocators.BRAND_SCROLLBAR))
 driver.find_element(*MainPageLocators.BRAND_SCROLLBAR).click()
 driver.find_element(*MainPageLocators.MODEL_SEARCH_BUTTON).click()
-wait.until(EC.element_to_be_clickable(MainPageLocators.MODEL_SCROLLBAR))
+# wait.until(EC.element_to_be_clickable(MainPageLocators.MODEL_SCROLLBAR))
 driver.find_element(*MainPageLocators.MODEL_SCROLLBAR).click()
 driver.find_element(*MainPageLocators.SUBMIT).click()
 
@@ -37,6 +36,5 @@ driver.find_element(*MainPageLocators.SUBMIT).click()
 wait.until(EC.element_to_be_clickable(SearchResultsPageLocators.SELECT_SORT))
 driver.find_element(*SearchResultsPageLocators.SELECT_SORT).click()
 driver.find_element(*SearchResultsPageLocators.DATE_SORT).click()
-
 # Close our webdriver
 driver.close()
