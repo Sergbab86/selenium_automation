@@ -25,16 +25,24 @@ driver.implicitly_wait(10)
 
 # Fill characteristics for the car
 driver.find_element(*MainPageLocators.BRAND_SEARCH_BUTTON).click()
+sleep(2)
 # wait.until(EC.element_to_be_clickable(MainPageLocators.BRAND_SCROLLBAR))
 driver.find_element(*MainPageLocators.BRAND_SCROLLBAR).click()
 driver.find_element(*MainPageLocators.MODEL_SEARCH_BUTTON).click()
+sleep(2)
+
 # wait.until(EC.element_to_be_clickable(MainPageLocators.MODEL_SCROLLBAR))
 driver.find_element(*MainPageLocators.MODEL_SCROLLBAR).click()
+sleep(2)
+
 driver.find_element(*MainPageLocators.SUBMIT).click()
 
 # Sort the result by date(desc)
 wait.until(EC.element_to_be_clickable(SearchResultsPageLocators.SELECT_SORT))
 driver.find_element(*SearchResultsPageLocators.SELECT_SORT).click()
+sleep(2)
+
 driver.find_element(*SearchResultsPageLocators.DATE_SORT).click()
+
 # Close our webdriver
 driver.close()
