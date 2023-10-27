@@ -40,3 +40,4 @@ class BasePage:
         WebDriverWait(self.driver, timeout).until(
             EC.visibility_of(element)
         )
+
