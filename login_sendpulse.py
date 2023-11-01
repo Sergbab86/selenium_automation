@@ -74,3 +74,5 @@ driver.find_element(By.CSS_SELECTOR, 'a[href="/logout/"]').click()
 sleep(2)
 #status-description > b:nth-child(1)
 driver.close()
+
+
